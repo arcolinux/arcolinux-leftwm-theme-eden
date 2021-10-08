@@ -20,7 +20,7 @@ blueberry-tray &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 /usr/lib/xfce4/notifyd/xfce4-notifyd &
 volumeicon &
-conky -c ~/.config/leftwm/system-overview &
+#conky -c ~/.config/leftwm/system-overview &
 #nitrogen --restore &
 #caffeine &
 #vivaldi-stable &
@@ -53,9 +53,9 @@ fi
 
 export index=0
 monitors=($(polybar -m | sed s/:.*//))
-leftwm-state -q -n -t "$SCRIPTPATH"/liquid/sizes.liquid | sed -r '/^\s*$/d' | while read -r width x y
+leftwm-state -q -n -t "$SCRIPTPATH"/sizes.liquid | sed -r '/^\s*$/d' | while read -r width x y
 do
   barname="mainbar$index"
-  monitor=${monitors[index]} width=$(( width - 16 )) polybar -c "$SCRIPTPATH"/polybar/polybar.config $barname &> /dev/null &
+  monitor=${monitors[index]} width=$(( width - 16 )) polybar -c "$SCRIPTPATH"/polybar.config $barname &> /dev/null &
   let index=index+1
 done
